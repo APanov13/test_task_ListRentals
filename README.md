@@ -1,6 +1,44 @@
 # test_task_ListRentals
 Test task to the company. Balance service
 
+Порядок запуска проекта.
+
+Клонировать репозиторий
+git clone git@github.com:APanov13/test_task_ListRentals.git
+
+перейти в папку с проектом
+cd test_task_ListRentals
+
+создать и запустить контейнеры с проектом и с БД
+docker-compose up -d --build
+
+выполнить миграции БД
+docker-compose exec web python manage.py makemigrations --noinput
+docker-compose exec web python manage.py migrate --noinput
+
+Проект запускается по адресу:
+http://127.0.0.1:8000
+
+Но т.к. настроена аутентификация по JWT-токену, то сперва надо зарегистрировать пользователя по адресу: 
+http://127.0.0.1:8000/auth/users/
+отправив POST-запрос с username и password, например:
+{
+    "username": "simple-user",
+    "password": "simple-password"
+}
+
+затем необходимо получить токен, отправив POST-запрос на адрес:
+http://127.0.0.1:8000/auth/jwt/create/
+передав в запросе username и password зарегистрированного пользователя, 
+{
+    "username": "simple-user",
+    "password": "simple-password"
+}
+Токен вернётся в поле "access", этот токен необходимо передавть в заголовке каждого запроса передд токеном необходимо поставить ключевое слово Bearer и пробел, например:
+
+Bearer silple-random-token
+
+
 Пока нет навыков работы с асинхронным пайтоном и его фреймворками, написал 
 сервис на DRF с использованием Dgango ORM, по этой причине не исползую SQLAlcemistry.
 

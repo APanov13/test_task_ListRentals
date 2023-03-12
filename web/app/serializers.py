@@ -1,6 +1,3 @@
-# Для тестирования отключена аутонтификация, что бы веруть необходимо -
-# убрать комент с урлов и настройки(установленные приложения и внизу файла)
-
 from rest_framework import serializers
 from app.models import Account, Transaction
 
