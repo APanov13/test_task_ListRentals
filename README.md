@@ -7,20 +7,20 @@
 
 ### Порядок запуска проекта.
 
-Клонировать репозиторий 
+Клонировать репозиторий  
 `git clone git@github.com:APanov13/test_task_ListRentals.git`
 
-создать и запустить контейнеры с проектом и с БД
+создать и запустить контейнеры с проектом и с БД  
 `docker-compose up -d --build`
 
-выполнить миграции БД
+выполнить миграции БД  
 `docker-compose exec web python manage.py makemigrations --noinput`  
 `docker-compose exec web python manage.py migrate --noinput`
 
-Проект запускается по адресу: `http://127.0.0.1:8000`
+Проект запускается по адресу: `http://127.0.0.1:8000`  
 
-Но т.к. настроена аутентификация по JWT-токену, то сперва надо зарегистрировать пользователя, отправив POST-запрос с username и password по адресу: `http://127.0.0.1:8000/auth/users/ `
-например: 
+Но т.к. настроена аутентификация по JWT-токену, то сперва надо зарегистрировать пользователя, отправив POST-запрос с username и password по адресу:   `http://127.0.0.1:8000/auth/users/ `
+например:  
 ```json
 {
 "username": "simple-user", 
