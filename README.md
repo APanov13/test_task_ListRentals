@@ -14,7 +14,7 @@
 `docker-compose up -d --build`
 
 выполнить миграции БД
-`docker-compose exec web python manage.py makemigrations --noinput`
+`docker-compose exec web python manage.py makemigrations --noinput`  
 `docker-compose exec web python manage.py migrate --noinput`
 
 Проект запускается по адресу: `http://127.0.0.1:8000`
